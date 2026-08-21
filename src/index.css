@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    background-image:
+      radial-gradient(ellipse 90% 60% at 10% -20%, rgba(196, 105, 74, 0.07), transparent 55%),
+      radial-gradient(ellipse 70% 50% at 95% 5%, rgba(45, 74, 62, 0.05), transparent 50%);
+  }
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection { background: rgba(196, 105, 74, 0.2); }
+}
+
+.color-grade { position: relative; }
+.color-grade::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(196, 105, 74, 0.025) 0%, transparent 35%, rgba(45, 74, 62, 0.02) 100%);
+  mix-blend-mode: soft-light;
+  z-index: 1;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2px;
+  background: #e5e5e3;
+  border-radius: 2px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #C4694A;
+  cursor: pointer;
+  border: 2px solid #FAFAF8;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #C4694A;
+  cursor: pointer;
+  border: 2px solid #FAFAF8;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(4deg); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(-3deg); }
+}
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-24px) rotate(5deg); }
+}
+.animate-float { animation: float 7s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 9s ease-in-out infinite; }
+.animate-float-delayed { animation: float-delayed 8s ease-in-out infinite 1.2s; }
+
+.glow-terracotta {
+  box-shadow: 0 0 50px rgba(196, 105, 74, 0.18), 0 0 100px rgba(196, 105, 74, 0.08);
+}
+
+.editorial-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(22,22,26,0.12), transparent);
+}
+.dark .editorial-line {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+}
